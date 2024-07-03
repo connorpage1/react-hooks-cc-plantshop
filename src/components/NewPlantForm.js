@@ -6,7 +6,7 @@ const initialState = {
   price: ""
 }
 
-function NewPlantForm({ url, addPlant }) {
+function NewPlantForm({ url, addPlant, handleError }) {
   const [formData, setFormData] = useState(initialState);
 
   const handleChange = (e) => {
@@ -49,7 +49,7 @@ const handleSubmit = (e) => {
     addPlant(plant)
     setFormData(initialState)
   })
-  .catch(console.log)
+  .catch(err => handleError("Could not add plant!"))
 }
 
   return (

@@ -2,6 +2,11 @@ import React, {useState, useEffect} from "react";
 import NewPlantForm from "./NewPlantForm";
 import PlantList from "./PlantList";
 import Search from "./Search";
+import { toast } from "react-hot-toast"
+
+const handleError = (errorText) => {
+  toast.error(errorText)
+}
 
 const url = "http://localhost:6001/plants"
 
@@ -22,12 +27,12 @@ function PlantPage() {
     fetch(url)
     .then(res => res.json())
     .then(setPlants)
-    .catch(console.log)
+    .catch(err => handleError(err.message))
   }, [])
 
   return (
     <main>
-      <NewPlantForm url={url} addPlant={addPlant}/>
+      <NewPlantForm url={url} addPlant={addPlant} handleError={handleError}/>
       <Search searchQuery={searchQuery} handleSearch={handleSearch}/>
       <PlantList plants={plants} searchQuery={searchQuery}/>
     </main>
