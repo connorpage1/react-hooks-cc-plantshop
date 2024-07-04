@@ -5,11 +5,10 @@ function PlantCard({ name, id, image, price, fetchDeletePlant, handleDelete, url
   const [editMode, setEditMode] = useState(false)
   const [editValue, setEditValue] = useState(price)
   
+  
   const fetchPatchPlant = (plantId) => {
     const data = {price: parseFloat(editValue)}
     
-
-
     fetch(`${url}/${plantId}`, {
       method: "PATCH",
       headers: {
