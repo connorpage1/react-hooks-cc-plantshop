@@ -29,7 +29,7 @@ function PlantList({ plants, searchQuery, handleDelete, handleError, url }) {
   } )
 
   return (
-    <ul className="cards">{filteredList.map((plant)=> <PlantCard key={plant.id} {...plant} handleDelete={handleDelete} fetchDeletePlant={fetchDeletePlant}/>)}</ul>
+    <ul className="cards">{filteredList.map((plant)=> <PlantCard key={plant.id} {...plant} handleDelete={handleDelete} fetchDeletePlant={fetchDeletePlant} url={url} handleError={handleError}/>)}</ul>
   );
 }
 

@@ -41,6 +41,12 @@
       "name": "Fiddle Leaf Fig",
       "image": "./images/fiddle-leaf-fig.jpg",
       "price": 55
+    },
+    {
+      "name": "test",
+      "image": "https://img.freepik.com/free-photo/monstera-deliciosa-plant-pot_53876-133119.jpg",
+      "price": 800,
+      "id": 8
     }
   ]
 }
