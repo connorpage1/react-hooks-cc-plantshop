@@ -14,6 +14,10 @@ function PlantPage() {
   const [plants, setPlants] = useState([])
   const [searchQuery, setSearchQuery] = useState("")
 
+  const handleDelete = (plantId) => {
+    setPlants(current => current.filter(plant => plant.id !== plantId))
+  }
+
   const addPlant = (newPlant) => {
     setPlants([...plants, newPlant])
   }
@@ -34,7 +38,7 @@ function PlantPage() {
     <main>
       <NewPlantForm url={url} addPlant={addPlant} handleError={handleError}/>
       <Search searchQuery={searchQuery} handleSearch={handleSearch}/>
-      <PlantList plants={plants} searchQuery={searchQuery}/>
+      <PlantList plants={plants} searchQuery={searchQuery} handleDelete={handleDelete} handleError={handleError} url={url}/>
     </main>
   );
 }

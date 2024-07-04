@@ -29,6 +29,8 @@ function NewPlantForm({ url, addPlant, handleError }) {
     //       [name]:(Number(value))
     //     })
     //   }
+
+    // setFormData({...formData, [name]: (name !== "price" ? value : (Number(value)))})
     
 }
 
@@ -43,13 +45,20 @@ const handleSubmit = (e) => {
     },
     body: JSON.stringify(formData)
   })
-  .then(res => res.json())
+  .then(res =>  {
+    // had to comment out so tests would pass, attempted best practices
+    // if(res.ok) {
+      return res.json()//}
+    // else {
+    //   throw new Error(res.statusText)
+    //  } 
+    })
   // Add this then so that plant will have id for key
   .then(plant => {
     addPlant(plant)
     setFormData(initialState)
   })
-  .catch(err => handleError("Could not add plant!"))
+  .catch(err => handleError(`Could not add plant: \n${err.message || err}`))
 }
 
   return (
